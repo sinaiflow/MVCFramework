@@ -1,0 +1,15 @@
+{
+    "name": "denistsyganok/framework-mvc",
+    "authors": [
+        {
+            "name": "sinaiflow",
+            "email": "spkespke@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
