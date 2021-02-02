@@ -28,15 +28,14 @@ class AuthController extends Controller
             {
                 return 'Success';
             }
-            debug($registerModel->errors);
             return $this->render('register',[
-               'model' => 'RegisterModel'
+               'model' => $registerModel,
             ]);
 
         }
         $this->setLayout('auth');
         return $this->render('register',[
-            'model' => 'RegisterModel'
+            'model' => $registerModel,
         ]);
     }
 
