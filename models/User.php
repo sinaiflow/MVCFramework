@@ -20,7 +20,7 @@ class User extends DatabaseModel
     public string $password = '';
     public string $passwordConfirm = '';
 
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'users';
     }
@@ -59,5 +59,10 @@ class User extends DatabaseModel
             'password' => 'Password',
             'passwordConfirm' => 'Confirm password',
         ];
+    }
+
+    public static function primaryKey(): string
+    {
+        return 'id';
     }
 }
