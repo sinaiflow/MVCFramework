@@ -2,6 +2,8 @@
 namespace app\core;
 
 
+use app\core\db\Database;
+
 class Application
 {
     public string $layout = 'main';
@@ -14,7 +16,7 @@ class Application
     public static Application $app;
     public ?Controller $controller = null ;
     public Session $session;
-    public ?DatabaseModel $user;
+    public ?UserModel $user;
     public View $view;
 
     public function  __construct($rootPath, array $config)
@@ -74,7 +76,7 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(DatabaseModel $user)
+    public function login(UserModel $user)
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey();
