@@ -4,6 +4,7 @@ namespace app\core;
 
 class Application
 {
+    public string $layout = 'main';
     public static string $ROOT_DIR;
     public string $userClass;
     public Router $router;
@@ -11,7 +12,7 @@ class Application
     public Response $response;
     public Database $db;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller = null ;
     public Session $session;
     public ?DatabaseModel $user;
 
@@ -38,9 +39,21 @@ class Application
         }
     }
 
+    public static function isGuest()
+    {
+        return !self::$app->user;
+    }
+
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        }catch (\Exception $e){
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView('_error',[
+                'exception' => $e,
+            ]);
+        }
     }
 
     /**

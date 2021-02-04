@@ -53,7 +53,6 @@ class Session
 
     public function set($key, $value)
     {
-        echo 1;
         return $_SESSION[$key] = $value;
     }
 
@@ -64,7 +63,7 @@ class Session
 
     public function remove($key)
     {
-        reunset($_SESSION[$key]);
+        unset($_SESSION[$key]);
     }
 
 }

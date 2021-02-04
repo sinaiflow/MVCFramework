@@ -4,9 +4,9 @@
 namespace app\models;
 
 
-use app\core\DatabaseModel;
+use app\core\UserModel;
 
-class User extends DatabaseModel
+class User extends UserModel
 {
 
     public const STATUS_INACTIVE = 0;
@@ -64,5 +64,10 @@ class User extends DatabaseModel
     public static function primaryKey(): string
     {
         return 'id';
+    }
+
+    public function getDisplayName(): string
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 }

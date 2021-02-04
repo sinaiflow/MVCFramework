@@ -1,8 +1,5 @@
 <?php
 use app\core\Application;
-echo '<pre>';
-var_dump(Application::$app->user);
-echo '</pre>';
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,6 +29,7 @@ echo '</pre>';
                     <a class="nav-link" href="/MVCFramework/contact">Contact</a>
                 </li>
             </ul>
+            <?php if(Application::isGuest()): ?>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/MVCFramework/login">Login</a>
@@ -40,6 +38,18 @@ echo '</pre>';
                     <a class="nav-link" href="/MVCFramework/register">Register</a>
                 </li>
             </ul>
+            <?php else: ?>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/MVCFramework/logout"> <?php echo Application::$app->user->getDisplayName()?>
+                            (Logout)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/MVCFramework/profile">Profile</a>
+                    </li>
+                </ul>
+            <?php endif;?>
         </div>
     </div>
 </nav>
