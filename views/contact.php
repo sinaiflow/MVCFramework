@@ -1,3 +1,7 @@
+<?php
+/** @var $this \app\core\View */
+$this->title = "Profile";
+?>
 <h1>Hello contact</h1>
 <form action="" method="post">
     <div class="mb-3">
